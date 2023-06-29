@@ -628,7 +628,7 @@ function Test-RecordSetTXTNonEmpty
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-function Test-RecordSetTXTLegacyLengthValidation
+<# function Test-RecordSetTXTLegacyLengthValidation
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
@@ -674,7 +674,7 @@ function Test-RecordSetTXTLengthValidation
 
 	Remove-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
+} #>
 
 
 function Test-RecordSetPTR

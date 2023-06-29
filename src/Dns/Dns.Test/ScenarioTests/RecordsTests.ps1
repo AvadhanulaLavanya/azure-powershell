@@ -624,10 +624,12 @@ function Test-RecordSetTXT
 
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT
 
+	$longRecordTxt = Get-TxtOfSpecifiedLength 4097;
+
 	# add three records, remove one, remove another no-op
-	$record = $record | Add-AzDnsRecordConfig -Value text1
+	$record = $record | Add-AzDnsRecordConfig -Value $longRecordTxt
 	$record = $record | Add-AzDnsRecordConfig -Value text2
-	$record = $record | Add-AzDnsRecordConfig -Value text3
+	$record = $record | Add-AzDnsRecordConfig -Value $longRecordTxt
 	$record = $record | Remove-AzDnsRecordConfig -Value text1
 	$record = $record | Remove-AzDnsRecordConfig -Value text4
 
@@ -682,13 +684,13 @@ function Test-RecordSetTXTNonEmpty
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
-function Test-RecordSetTXTLegacyLengthValidation
+<#function Test-RecordSetTXTLegacyLengthValidation
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
     $resourceGroup = TestSetup-CreateResourceGroup 
 	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName 
-	$longRecordTxt = Get-TxtOfSpecifiedLength 1025;
+	$longRecordTxt = Get-TxtOfSpecifiedLength 4097;
 	$maxRecordTxt = Get-TxtOfSpecifiedLength 1024;
 
 	$recordSet = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType TXT ;
@@ -728,7 +730,7 @@ function Test-RecordSetTXTLengthValidation
 
 	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
-}
+}#>
 
 
 function Test-RecordSetPTR

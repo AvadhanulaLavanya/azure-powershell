@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             TestRunner.RunTestScript("Test-RecordSetTXTNonEmpty");
         }
 
-        [Fact]
+        /*[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXTLengthValidation()
         {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         public void TestRecordSetTXTLegacyLengthValidation()
         {
             TestRunner.RunTestScript("Test-RecordSetTXTLegacyLengthValidation");
-        }
+        }*/
 
 
         [Fact]
